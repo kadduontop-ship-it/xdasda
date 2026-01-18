@@ -80,7 +80,7 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   font-weight:700;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   background:linear-gradient(120deg,#111,#222,#111);
   background-size:200% 200%;
   border:1px solid #333;
@@ -97,8 +97,12 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   100%{background-position:0% 50%}
 }
 
-/* ICON */
-.social-icon{width:20px;height:20px}
+/* SOCIAL ICON */
+.social-icon{
+  width:20px;
+  height:20px;
+  fill:currentColor;
+}
 
 /* GRID */
 .grid{
@@ -210,68 +214,49 @@ button:hover{
   <p id="heroSubtitle" class="hero-subtitle"></p>
 
   <div class="buttons">
-    <div class="btn" onclick="openOrder('tiktok')">TikTok</div>
-    <div class="btn" onclick="openOrder('instagram')">Instagram</div>
-  </div>
-</section>
+    <div class="btn" onclick="openOrder('tiktok')">
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <path d="M16.7 5.3c.9.7 2 1.1 3.3 1.2V9c-1.4 0-2.7-.4-3.9-1.1v6.1c0 3.1-2.5 5.7-5.7 5.7S4.6 17.2 4.6 14.1c0-3 2.4-5.5 5.4-5.7v3c-.7.1-1.3.4-1.8.9-.5.5-.8 1.2-.8 1.9 0 1.5 1.2 2.7 2.7 2.7s2.7-1.2 2.7-2.7V2h2.9c.2 1.2.8 2.3 1.7 3.3z"/>
+      </svg>
+      TikTok
+    </div>
 
-<!-- WHY -->
-<section>
-  <h2>Why Choose Us</h2>
-  <div class="grid">
-    <div class="card">⚡ Fast Delivery</div>
-    <div class="card">🔒 100% Safe</div>
-    <div class="card">🎁 Completely Free</div>
-  </div>
-</section>
-
-<!-- HOW -->
-<section id="how">
-  <h2>How It Works</h2>
-  <div class="grid">
-    <div class="card">Choose Service</div>
-    <div class="card">Paste Link</div>
-    <div class="card">Get Views</div>
+    <div class="btn" onclick="openOrder('instagram')">
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.2A4.8 4.8 0 1 0 16.8 12 4.8 4.8 0 0 0 12 7.2zm0 7.6A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.5 6.5a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/>
+      </svg>
+      Instagram
+    </div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
-  <h2>FAQ</h2>
+  <h2>Frequently Asked Questions</h2>
+
   <div class="faq">
     <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Is this free?</div>
-      <div class="faq-a">Yes, watch an ad.</div>
+      <div class="faq-q">Is this service free?</div>
+      <div class="faq-a">Yes, you can use it for free by watching a short ad.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How long does the delivery take?</div>
+      <div class="faq-a">Most orders are delivered within 5–15 minutes after submission.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Is it safe to use?</div>
+      <div class="faq-a">Yes, it is completely safe. We never ask for passwords or private data.</div>
     </div>
   </div>
 </section>
-
-<!-- AUTH -->
-<div class="modal" id="auth">
-  <div class="box">
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
-    <button onclick="signup()">Signup</button>
-    <button onclick="login()">Login</button>
-    <button onclick="closeAuth()">Close</button>
-  </div>
-</div>
-
-<!-- ORDER -->
-<div class="modal" id="order">
-  <div class="box">
-    <input id="link" placeholder="Paste your link">
-    <button onclick="watchAd()">Watch Ad & Proceed</button>
-    <button onclick="closeOrder()">Cancel</button>
-  </div>
-</div>
 
 <footer style="border-top:1px solid #222;padding:30px;text-align:center;color:#777;font-size:14px;">
   © 2026 ViralBoost • All Rights Reserved
 </footer>
 
 <script>
-/* TITLE */
 const mainText="Luxury Social Media Growth";
 let mi=0;
 (function(){
@@ -280,8 +265,6 @@ let mi=0;
     setTimeout(arguments.callee,80);
   }
 })();
-
-/* SUBTITLE */
 const subText="Luxury social media growth for TikTok & Instagram.";
 let si=0;
 (function(){
@@ -290,26 +273,13 @@ let si=0;
     setTimeout(arguments.callee,45);
   }
 })();
-
-/* SCROLL */
 function scrollToId(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
-
-/* MODALS */
-let currentPlatform="";
-function openOrder(p){currentPlatform=p;order.classList.add("active")}
-function closeOrder(){order.classList.remove("active")}
-function openAuth(){auth.classList.add("active")}
-function closeAuth(){auth.classList.remove("active")}
-
-/* FAQ */
 function toggleFaq(el){
   const a=el.querySelector(".faq-a");
   a.style.maxHeight=a.style.maxHeight?"":a.scrollHeight+"px";
 }
-
-/* WATER CURSOR */
 if(window.matchMedia("(pointer:fine)").matches){
   document.addEventListener("mousemove",e=>{
     const r=document.createElement("div");
