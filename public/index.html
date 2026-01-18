@@ -67,7 +67,7 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   min-height:2.2rem;
 }
 
-/* 🔥 ANIMATED BUTTONS */
+/* BUTTONS */
 .buttons{
   display:flex;
   gap:24px;
@@ -76,14 +76,14 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
 .btn{
   padding:18px 34px;
   border-radius:18px;
+  background:linear-gradient(120deg,#111,#222,#111);
+  background-size:200% 200%;
+  border:1px solid #333;
   cursor:pointer;
   font-weight:700;
   display:flex;
   align-items:center;
   gap:12px;
-  background:linear-gradient(120deg,#111,#222,#111);
-  background-size:200% 200%;
-  border:1px solid #333;
   animation:gradientMove 4s ease infinite;
   transition:.3s;
 }
@@ -138,7 +138,7 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   margin-top:8px;
 }
 
-/* MODAL */
+/* MODALS */
 .modal{
   position:fixed;inset:0;
   background:rgba(0,0,0,.75);
@@ -148,7 +148,7 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
 }
 .modal.active{display:flex}
 
-/* 🔐 MODERN LOGIN UI */
+/* MODERN LOGIN UI */
 .box{
   background:linear-gradient(180deg,#111,#0c0c0c);
   border:1px solid #333;
@@ -178,7 +178,7 @@ button:hover{
   transform:translateY(-1px);
 }
 
-/* 💧 WATER CURSOR */
+/* WATER CURSOR */
 .ripple{
   position:fixed;
   border:1px solid rgba(245,199,122,.4);
@@ -230,67 +230,30 @@ button:hover{
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <h2>Frequently Asked Questions</h2>
-
-  <div class="faq">
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Is this service free?</div>
-      <div class="faq-a">Yes, you can use it for free by watching a short ad.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">How long does the delivery take?</div>
-      <div class="faq-a">Most orders are delivered within 5–15 minutes after submission.</div>
-    </div>
-
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Is it safe to use?</div>
-      <div class="faq-a">Yes, it is completely safe. We never ask for passwords or private data.</div>
-    </div>
+<!-- WHY CHOOSE US -->
+<section>
+  <h2>Why Choose Us</h2>
+  <div class="grid">
+    <div class="card">⚡ Fast Delivery</div>
+    <div class="card">🔒 100% Safe</div>
+    <div class="card">🎁 Completely Free</div>
   </div>
 </section>
 
-<footer style="border-top:1px solid #222;padding:30px;text-align:center;color:#777;font-size:14px;">
-  © 2026 ViralBoost • All Rights Reserved
-</footer>
+<!-- HOW IT WORKS -->
+<section id="how">
+  <h2>How It Works</h2>
+  <div class="grid">
+    <div class="card">Choose Service</div>
+    <div class="card">Paste Link</div>
+    <div class="card">Get Views</div>
+  </div>
+</section>
 
-<script>
-const mainText="Luxury Social Media Growth";
-let mi=0;
-(function(){
-  if(mi<mainText.length){
-    type.innerHTML+=mainText.charAt(mi++);
-    setTimeout(arguments.callee,80);
-  }
-})();
-const subText="Luxury social media growth for TikTok & Instagram.";
-let si=0;
-(function(){
-  if(si<subText.length){
-    heroSubtitle.innerHTML+=subText.charAt(si++);
-    setTimeout(arguments.callee,45);
-  }
-})();
-function scrollToId(id){
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-function toggleFaq(el){
-  const a=el.querySelector(".faq-a");
-  a.style.maxHeight=a.style.maxHeight?"":a.scrollHeight+"px";
-}
-if(window.matchMedia("(pointer:fine)").matches){
-  document.addEventListener("mousemove",e=>{
-    const r=document.createElement("div");
-    r.className="ripple";
-    r.style.left=e.clientX+"px";
-    r.style.top=e.clientY+"px";
-    document.body.appendChild(r);
-    setTimeout(()=>r.remove(),800);
-  });
-}
-</script>
-
-</body>
-</html>
+<!-- FAQ -->
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Is this service free?</div>
+      <div class="f
