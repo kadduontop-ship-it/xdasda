@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ViralBoost</title>
+
+<!-- POPADS -->
+<script type="text/javascript">
+  var popads = popads || {};
+  popads.siteId = YOUR_POPADS_SITE_ID;
+</script>
+<script src="//c1.popads.net/pop.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:system-ui;
+  background:#0a0a0a;
+  color:#fff;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* GLOW */
+.glow{
+  position:fixed;top:0;width:380px;height:100%;
+  background:radial-gradient(circle,rgba(245,199,122,.35),transparent 70%);
+  filter:blur(150px);z-index:-1;
+}
+.glow.left{left:-180px}
+.glow.right{right:-180px}
+
+/* HEADER */
+header{
+  position:fixed;top:0;width:100%;
+  display:flex;justify-content:space-between;
+  padding:20px 40px;z-index:10;
+}
+nav a{margin-left:24px;cursor:pointer}
+
+/* SECTIONS */
+section{max-width:1100px;margin:auto;padding:120px 20px}
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+}
+h1{font-size:3.4rem;margin-bottom:12px}
+h2{font-size:2.3rem;margin-bottom:28px}
+p{color:#aaa;line-height:1.6}
+
+/* BUTTONS */
+.buttons{display:flex;gap:22px;margin-top:40px}
+.btn{
+  padding:18px 36px;border-radius:18px;
+  background:#111;border:1px solid #333;
+  cursor:pointer;font-weight:600;
+  transition:.3s;
+}
+.btn:hover{box-shadow:0 0 35px rgba(245,199,122,.45)}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
+.card{
+  background:#111;border:1px solid #333;
+  padding:28px;border-radius:18px;
+}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid #333;padding:18px 0;cursor:pointer}
+.faq-answer{max-height:0;overflow:hidden;transition:.3s;color:#aaa}
+
+/* MODAL */
+.modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;align-items:center;justify-content:center;
+}
+.modal.active{display:flex}
+.box{
+  background:#111;border:1px solid #333;
+  padding:30px;border-radius:18px;width:320px;
+}
+input,button{
+  width:100%;padding:12px;margin-top:10px;
+  background:#0a0a0a;color:#fff;border:1px solid #333;
+}
+
+/* WATER CURSOR (PC ONLY) */
+.ripple{
+  position:fixed;border:1px solid rgba(245,199,122,.4);
+  border-radius:50%;width:20px;height:20px;
+  pointer-events:none;animation:ripple .8s linear;
+}
+@keyframes ripple{to{transform:scale(6);opacity:0}}
+</style>
+</head>
+
+<body>
+
+<div class="glow left"></div>
+<div class="glow right"></div>
+
+<header>
+  <strong>ViralBoost</strong>
+  <nav>
+    <a onclick="scrollToId('how')">How it works</a>
+    <a onclick="scrollToId('faq')">FAQ</a>
+    <a onclick="openAuth()">Login</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 id="type"></h1>
+  <p>Luxury social media growth for TikTok & Instagram.</p>
+
+  <div class="buttons">
+    <div class="btn" onclick="openOrder('tiktok')">TikTok</div>
+    <div class="btn" onclick="openOrder('instagram')">Instagram</div>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">TikTok Views – Safe & Fast</div>
+    <div class="card">Instagram Views – Real Growth</div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How It Works</h2>
+  <div class="grid">
+    <div class="card">Paste your video link</div>
+    <div class="card">Watch one ad (free users)</div>
+    <div class="card">Receive 100 views instantly</div>
+  </div>
+</section>
+
+<section id="trust">
+  <h2>Why Trust Us</h2>
+  <div class="grid">
+    <div class="card">No password needed</div>
+    <div class="card">Secure API orders</div>
+    <div class="card">Trusted by thousands</div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    Is it free?
+    <div class="faq-answer">Yes, free users watch ads.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    Is it safe?
+    <div class="faq-answer">We never ask for passwords.</div>
+  </div>
+</section>
+
+<!-- AUTH -->
+<div class="modal" id="auth">
+  <div class="box">
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="signup()">Signup</button>
+    <button onclick="login()">Login</button>
+    <button onclick="closeAuth()">Close</button>
+  </div>
+</div>
+
+<!-- ORDER -->
+<div class="modal" id="order">
+  <div class="box">
+    <input id="link" placeholder="Paste video link">
+    <button onclick="watchAd()">Watch Ad & Proceed</button>
+    <button onclick="closeOrder()">Cancel</button>
+  </div>
+</div>
+
+<script>
+/* TYPE */
+const text="Luxury Social Media Growth";
+let i=0;
+(function type(){
+  if(i<text.length){
+    document.getElementById("type").innerHTML+=text[i++];
+    setTimeout(type,80);
+  }
+})();
+
+/* SCROLL */
+function scrollToId(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+/* MODALS */
+let currentPlatform="";
+function openOrder(p){currentPlatform=p;order.classList.add("active")}
+function closeOrder(){order.classList.remove("active")}
+function openAuth(){auth.classList.add("active")}
+function closeAuth(){auth.classList.remove("active")}
+
+/* AUTH */
+async function signup(){
+  await fetch("/api/signup",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({email:email.value,password:password.value})});
+  alert("Account created");
+}
+async function login(){
+  const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({email:email.value,password:password.value})});
+  const d=await r.json();
+  if(d.token){localStorage.token=d.token;alert("Logged in");closeAuth()}
+}
+
+/* AD + ORDER */
+async function watchAd(){
+  if(!localStorage.token){
+    await new Promise(r=>setTimeout(r,10000)); // ad wait
+  }
+  const r=await fetch("/api/order",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({platform:currentPlatform,link:link.value,token:localStorage.token})});
+  alert(JSON.stringify(await r.json()));
+  closeOrder();
+}
+
+/* FAQ */
+function toggleFaq(el){
+  const a=el.querySelector(".faq-answer");
+  a.style.maxHeight=a.style.maxHeight?"":a.scrollHeight+"px";
+}
+
+/* WATER CURSOR (PC) */
+if(window.matchMedia("(pointer:fine)").matches){
+  document.addEventListener("mousemove",e=>{
+    const r=document.createElement("div");
+    r.className="ripple";
+    r.style.left=e.clientX+"px";
+    r.style.top=e.clientY+"px";
+    document.body.appendChild(r);
+    setTimeout(()=>r.remove(),800);
+  });
+}
+</script>
+
+</body>
+</html>
