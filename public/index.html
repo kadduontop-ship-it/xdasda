@@ -57,7 +57,15 @@ section{
 h1{font-size:3.4rem;margin-bottom:12px}
 h2{font-size:2.4rem;margin-bottom:12px}
 h3{margin-bottom:10px}
-p{color:#aaa;line-height:1.6;max-width:700px;margin:auto}
+p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
+
+/* HERO SUBTITLE */
+.hero-subtitle{
+  font-size:1.7rem;
+  font-weight:500;
+  color:#ccc;
+  min-height:2.2rem;
+}
 
 /* BUTTONS */
 .buttons{
@@ -179,7 +187,7 @@ input,button{
 <!-- HERO -->
 <section class="hero">
   <h1 id="type"></h1>
-  <p>Luxury social media growth for TikTok & Instagram.</p>
+  <p id="heroSubtitle" class="hero-subtitle"></p>
 
   <div class="buttons">
     <div class="btn" onclick="openOrder('tiktok')">
@@ -188,16 +196,6 @@ input,button{
     <div class="btn" onclick="openOrder('instagram')">
       <span class="icon">📸</span> Instagram
     </div>
-  </div>
-</section>
-
-<!-- OUR SERVICES -->
-<section>
-  <h2>Our Services</h2>
-  <p>We provide high-quality engagement services for creators.</p>
-  <div class="grid">
-    <div class="card">TikTok Views – Fast & Real</div>
-    <div class="card">Instagram Views – Safe & Reliable</div>
   </div>
 </section>
 
@@ -223,6 +221,16 @@ input,button{
   </div>
 </section>
 
+<!-- OUR SERVICES -->
+<section>
+  <h2>Our Services</h2>
+  <p>We provide high-quality engagement services for creators.</p>
+  <div class="grid">
+    <div class="card">TikTok Views – Fast & Real</div>
+    <div class="card">Instagram Views – Safe & Reliable</div>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section id="how">
   <h2>How It Works</h2>
@@ -236,10 +244,6 @@ input,button{
     <div class="card">
       <h3>Enter Link</h3>
       <p>Paste your video or reel link</p>
-    </div>
-    <div class="card">
-      <h3>Watch Ad</h3>
-      <p>Free users watch one short ad</p>
     </div>
     <div class="card">
       <h3>Get Results</h3>
@@ -289,16 +293,26 @@ input,button{
 </div>
 
 <script>
-/* TYPE EFFECT */
-const text="Luxury Social Media Growth";
-let i=0;
-(function type(){
-  if(i<text.length){
-    typeEl.innerHTML+=text[i++];
-    setTimeout(type,80);
+/* MAIN TITLE TYPE */
+const mainText="Luxury Social Media Growth";
+let mi=0;
+(function typeMain(){
+  if(mi<mainText.length){
+    document.getElementById("type").innerHTML+=mainText.charAt(mi++);
+    setTimeout(typeMain,80);
   }
 })();
-const typeEl=document.getElementById("type");
+
+/* SUBTITLE TYPE */
+const subText="Luxury social media growth for TikTok & Instagram.";
+let si=0;
+const subEl=document.getElementById("heroSubtitle");
+(function typeSub(){
+  if(si<subText.length){
+    subEl.innerHTML+=subText.charAt(si++);
+    setTimeout(typeSub,45);
+  }
+})();
 
 /* SCROLL */
 function scrollToId(id){
