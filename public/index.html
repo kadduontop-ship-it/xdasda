@@ -179,6 +179,35 @@ button:hover{
   to{transform:scale(6);opacity:0}
 }
 </style>
+/* MODERN POPUP UPGRADE */
+.modal.active{
+  backdrop-filter: blur(6px);
+}
+
+.box{
+  background:linear-gradient(180deg,#111,#0b0b0b);
+  box-shadow:0 0 60px rgba(0,0,0,.8),0 0 40px rgba(245,199,122,.15);
+}
+
+.box h3{
+  margin-bottom:10px;
+  font-size:1.4rem;
+}
+
+/* MODERN BUTTONS INSIDE POPUPS */
+.box button{
+  background:linear-gradient(120deg,#1a1a1a,#2a2a2a,#1a1a1a);
+  background-size:200% 200%;
+  animation:popupBtn 4s ease infinite;
+}
+
+@keyframes popupBtn{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+  
 </head>
 
 <body>
@@ -201,10 +230,15 @@ button:hover{
   <h1 id="type"></h1>
   <p id="heroSubtitle" class="hero-subtitle"></p>
 
-  <div class="buttons">
-    <div class="btn" onclick="openOrder('tiktok')">TikTok</div>
-    <div class="btn" onclick="openOrder('instagram')">Instagram</div>
+ <div class="buttons">
+  <div class="btn" onclick="openOrder('tiktok')">
+    🎵 TikTok
   </div>
+  <div class="btn" onclick="openOrder('instagram')">
+    📸 Instagram
+  </div>
+</div>
+
 </section>
 
 <!-- WHY -->
@@ -304,3 +338,4 @@ if(window.matchMedia("(pointer:fine)").matches){
 
 </body>
 </html>
+
