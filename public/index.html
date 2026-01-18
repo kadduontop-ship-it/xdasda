@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title>ViralBoost</title>
 
-<!-- POPADS -->
-<script type="text/javascript">
+<!-- PopAds -->
+<script>
   var popads = popads || {};
   popads.siteId = YOUR_POPADS_SITE_ID;
 </script>
@@ -21,7 +21,7 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
-/* GLOW */
+/* GOLD GLOW */
 .glow{
   position:fixed;top:0;width:380px;height:100%;
   background:radial-gradient(circle,rgba(245,199,122,.35),transparent 70%);
@@ -34,70 +34,131 @@ a{color:inherit;text-decoration:none}
 header{
   position:fixed;top:0;width:100%;
   display:flex;justify-content:space-between;
-  padding:20px 40px;z-index:10;
+  align-items:center;
+  padding:20px 40px;
+  z-index:10;
 }
-nav a{margin-left:24px;cursor:pointer}
+nav a{margin-left:24px;cursor:pointer;color:#ddd}
 
 /* SECTIONS */
-section{max-width:1100px;margin:auto;padding:120px 20px}
-.hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:120px 20px;
   text-align:center;
 }
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
 h1{font-size:3.4rem;margin-bottom:12px}
-h2{font-size:2.3rem;margin-bottom:28px}
-p{color:#aaa;line-height:1.6}
+h2{font-size:2.4rem;margin-bottom:12px}
+h3{margin-bottom:10px}
+p{color:#aaa;line-height:1.6;max-width:700px;margin:auto}
 
 /* BUTTONS */
-.buttons{display:flex;gap:22px;margin-top:40px}
+.buttons{
+  display:flex;
+  gap:24px;
+  margin-top:40px;
+}
 .btn{
-  padding:18px 36px;border-radius:18px;
-  background:#111;border:1px solid #333;
-  cursor:pointer;font-weight:600;
+  padding:18px 34px;
+  border-radius:18px;
+  background:#111;
+  border:1px solid #333;
+  cursor:pointer;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
   transition:.3s;
 }
-.btn:hover{box-shadow:0 0 35px rgba(245,199,122,.45)}
+.btn:hover{
+  box-shadow:0 0 35px rgba(245,199,122,.45);
+}
+
+/* ICON */
+.icon{
+  font-size:1.4rem;
+}
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:32px;
+  margin-top:50px;
 }
 .card{
-  background:#111;border:1px solid #333;
-  padding:28px;border-radius:18px;
+  background:#111;
+  border:1px solid #333;
+  padding:32px;
+  border-radius:18px;
 }
 
 /* FAQ */
-.faq-item{border-bottom:1px solid #333;padding:18px 0;cursor:pointer}
-.faq-answer{max-height:0;overflow:hidden;transition:.3s;color:#aaa}
+.faq{
+  max-width:800px;
+  margin:40px auto 0;
+  text-align:left;
+}
+.faq-item{
+  border-bottom:1px solid #333;
+  padding:18px 0;
+  cursor:pointer;
+}
+.faq-q{
+  font-weight:600;
+}
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:.3s;
+  color:#aaa;
+  margin-top:8px;
+}
 
 /* MODAL */
 .modal{
   position:fixed;inset:0;
   background:rgba(0,0,0,.75);
-  display:none;align-items:center;justify-content:center;
+  display:none;
+  justify-content:center;
+  align-items:center;
 }
 .modal.active{display:flex}
 .box{
-  background:#111;border:1px solid #333;
-  padding:30px;border-radius:18px;width:320px;
+  background:#111;
+  border:1px solid #333;
+  padding:30px;
+  border-radius:18px;
+  width:320px;
 }
 input,button{
-  width:100%;padding:12px;margin-top:10px;
-  background:#0a0a0a;color:#fff;border:1px solid #333;
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:#0a0a0a;
+  color:#fff;
+  border:1px solid #333;
 }
 
-/* WATER CURSOR (PC ONLY) */
+/* WATER CURSOR */
 .ripple{
-  position:fixed;border:1px solid rgba(245,199,122,.4);
-  border-radius:50%;width:20px;height:20px;
-  pointer-events:none;animation:ripple .8s linear;
+  position:fixed;
+  border:1px solid rgba(245,199,122,.4);
+  border-radius:50%;
+  width:20px;height:20px;
+  pointer-events:none;
+  animation:ripple .8s linear;
 }
-@keyframes ripple{to{transform:scale(6);opacity:0}}
+@keyframes ripple{
+  to{transform:scale(6);opacity:0}
+}
 </style>
 </head>
 
@@ -109,57 +170,101 @@ input,button{
 <header>
   <strong>ViralBoost</strong>
   <nav>
-    <a onclick="scrollToId('how')">How it works</a>
+    <a onclick="scrollToId('how')">How It Works</a>
     <a onclick="scrollToId('faq')">FAQ</a>
     <a onclick="openAuth()">Login</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <h1 id="type"></h1>
   <p>Luxury social media growth for TikTok & Instagram.</p>
 
   <div class="buttons">
-    <div class="btn" onclick="openOrder('tiktok')">TikTok</div>
-    <div class="btn" onclick="openOrder('instagram')">Instagram</div>
+    <div class="btn" onclick="openOrder('tiktok')">
+      <span class="icon">🎵</span> TikTok
+    </div>
+    <div class="btn" onclick="openOrder('instagram')">
+      <span class="icon">📸</span> Instagram
+    </div>
   </div>
 </section>
 
-<section id="services">
+<!-- OUR SERVICES -->
+<section>
   <h2>Our Services</h2>
+  <p>We provide high-quality engagement services for creators.</p>
   <div class="grid">
-    <div class="card">TikTok Views – Safe & Fast</div>
-    <div class="card">Instagram Views – Real Growth</div>
+    <div class="card">TikTok Views – Fast & Real</div>
+    <div class="card">Instagram Views – Safe & Reliable</div>
   </div>
 </section>
 
+<!-- WHY CHOOSE US -->
+<section>
+  <h2>Why Choose Us</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Fast Delivery</h3>
+      <p>Get your followers and views delivered instantly with our high-speed servers.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔒</div>
+      <h3>100% Safe</h3>
+      <p>Our services are completely safe and secure. No password required.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎁</div>
+      <h3>Completely Free</h3>
+      <p>No hidden fees, no credit card required. 100% free forever.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
 <section id="how">
   <h2>How It Works</h2>
+  <p>Four simple steps to boost your social media presence</p>
+
   <div class="grid">
-    <div class="card">Paste your video link</div>
-    <div class="card">Watch one ad (free users)</div>
-    <div class="card">Receive 100 views instantly</div>
+    <div class="card">
+      <h3>Choose Service</h3>
+      <p>Select TikTok Views or Instagram Views</p>
+    </div>
+    <div class="card">
+      <h3>Enter Link</h3>
+      <p>Paste your video or reel link</p>
+    </div>
+    <div class="card">
+      <h3>Watch Ad</h3>
+      <p>Free users watch one short ad</p>
+    </div>
+    <div class="card">
+      <h3>Get Results</h3>
+      <p>Receive 100 views within 5 minutes</p>
+    </div>
   </div>
 </section>
 
-<section id="trust">
-  <h2>Why Trust Us</h2>
-  <div class="grid">
-    <div class="card">No password needed</div>
-    <div class="card">Secure API orders</div>
-    <div class="card">Trusted by thousands</div>
-  </div>
-</section>
-
+<!-- FAQ -->
 <section id="faq">
-  <h2>FAQ</h2>
-  <div class="faq-item" onclick="toggleFaq(this)">
-    Is it free?
-    <div class="faq-answer">Yes, free users watch ads.</div>
-  </div>
-  <div class="faq-item" onclick="toggleFaq(this)">
-    Is it safe?
-    <div class="faq-answer">We never ask for passwords.</div>
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Is this service free?</div>
+      <div class="faq-a">Yes, free users can use it by watching an ad.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Is it safe to use?</div>
+      <div class="faq-a">Yes. We never ask for passwords or private information.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How many views do I get?</div>
+      <div class="faq-a">Every order gives exactly 100 views.</div>
+    </div>
   </div>
 </section>
 
@@ -177,22 +282,23 @@ input,button{
 <!-- ORDER -->
 <div class="modal" id="order">
   <div class="box">
-    <input id="link" placeholder="Paste video link">
+    <input id="link" placeholder="Paste your link">
     <button onclick="watchAd()">Watch Ad & Proceed</button>
     <button onclick="closeOrder()">Cancel</button>
   </div>
 </div>
 
 <script>
-/* TYPE */
+/* TYPE EFFECT */
 const text="Luxury Social Media Growth";
 let i=0;
 (function type(){
   if(i<text.length){
-    document.getElementById("type").innerHTML+=text[i++];
+    typeEl.innerHTML+=text[i++];
     setTimeout(type,80);
   }
 })();
+const typeEl=document.getElementById("type");
 
 /* SCROLL */
 function scrollToId(id){
@@ -222,7 +328,7 @@ async function login(){
 /* AD + ORDER */
 async function watchAd(){
   if(!localStorage.token){
-    await new Promise(r=>setTimeout(r,10000)); // ad wait
+    await new Promise(r=>setTimeout(r,10000));
   }
   const r=await fetch("/api/order",{method:"POST",headers:{"Content-Type":"application/json"},
   body:JSON.stringify({platform:currentPlatform,link:link.value,token:localStorage.token})});
@@ -230,13 +336,13 @@ async function watchAd(){
   closeOrder();
 }
 
-/* FAQ */
+/* FAQ TOGGLE */
 function toggleFaq(el){
-  const a=el.querySelector(".faq-answer");
+  const a=el.querySelector(".faq-a");
   a.style.maxHeight=a.style.maxHeight?"":a.scrollHeight+"px";
 }
 
-/* WATER CURSOR (PC) */
+/* WATER CURSOR (PC ONLY) */
 if(window.matchMedia("(pointer:fine)").matches){
   document.addEventListener("mousemove",e=>{
     const r=document.createElement("div");
