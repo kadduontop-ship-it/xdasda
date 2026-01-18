@@ -38,7 +38,31 @@ header{
   padding:20px 40px;
   z-index:10;
 }
-nav a{margin-left:24px;cursor:pointer;color:#ddd}
+nav{
+  display:flex;
+  gap:24px;
+  align-items:center;
+}
+nav a{
+  cursor:pointer;
+  color:#ddd;
+  font-weight:500;
+}
+
+/* DISCORD BUTTON */
+.discord-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:12px;
+  background:#5865F2;
+  color:#fff;
+  font-weight:600;
+}
+.discord-btn:hover{
+  opacity:.9;
+}
 
 /* SECTIONS */
 section{
@@ -82,16 +106,17 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   font-weight:600;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   transition:.3s;
 }
 .btn:hover{
   box-shadow:0 0 35px rgba(245,199,122,.45);
 }
 
-/* ICON */
-.icon{
-  font-size:1.4rem;
+/* SOCIAL ICON */
+.social-icon{
+  width:22px;
+  height:22px;
 }
 
 /* GRID */
@@ -119,9 +144,7 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   padding:18px 0;
   cursor:pointer;
 }
-.faq-q{
-  font-weight:600;
-}
+.faq-q{font-weight:600}
 .faq-a{
   max-height:0;
   overflow:hidden;
@@ -130,29 +153,48 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   margin-top:8px;
 }
 
-/* MODAL */
+/* MODAL (MODERNIZED) */
 .modal{
-  position:fixed;inset:0;
+  position:fixed;
+  inset:0;
   background:rgba(0,0,0,.75);
   display:none;
   justify-content:center;
   align-items:center;
+  backdrop-filter:blur(8px);
 }
 .modal.active{display:flex}
 .box{
-  background:#111;
+  background:linear-gradient(180deg,#111,#0b0b0b);
   border:1px solid #333;
-  padding:30px;
-  border-radius:18px;
-  width:320px;
+  padding:34px;
+  border-radius:22px;
+  width:360px;
+  box-shadow:0 20px 80px rgba(0,0,0,.7);
+}
+.box h3{
+  text-align:center;
+  margin-bottom:14px;
 }
 input,button{
   width:100%;
-  padding:12px;
-  margin-top:10px;
+  padding:14px;
+  margin-top:12px;
   background:#0a0a0a;
   color:#fff;
   border:1px solid #333;
+  border-radius:12px;
+}
+button{
+  cursor:pointer;
+}
+button.primary{
+  background:#f5c77a;
+  color:#000;
+  font-weight:700;
+}
+button.primary:hover{
+  opacity:.9;
 }
 
 /* WATER CURSOR */
@@ -180,6 +222,9 @@ input,button{
   <nav>
     <a onclick="scrollToId('how')">How It Works</a>
     <a onclick="scrollToId('faq')">FAQ</a>
+    <a href="https://discord.gg/eG3KwUXcmB" target="_blank" class="discord-btn">
+      Discord
+    </a>
     <a onclick="openAuth()">Login</a>
   </nav>
 </header>
@@ -191,10 +236,19 @@ input,button{
 
   <div class="buttons">
     <div class="btn" onclick="openOrder('tiktok')">
-      <span class="icon">🎵</span> TikTok
+      <!-- TikTok SVG -->
+      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
+        <path d="M12 2h3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.7V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3z"/>
+      </svg>
+      TikTok
     </div>
+
     <div class="btn" onclick="openOrder('instagram')">
-      <span class="icon">📸</span> Instagram
+      <!-- Instagram SVG -->
+      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+      </svg>
+      Instagram
     </div>
   </div>
 </section>
@@ -204,18 +258,15 @@ input,button{
   <h2>Why Choose Us</h2>
   <div class="grid">
     <div class="card">
-      <div class="icon">⚡</div>
-      <h3>Fast Delivery</h3>
+      <h3>⚡ Fast Delivery</h3>
       <p>Get your followers and views delivered instantly with our high-speed servers.</p>
     </div>
     <div class="card">
-      <div class="icon">🔒</div>
-      <h3>100% Safe</h3>
+      <h3>🔒 100% Safe</h3>
       <p>Our services are completely safe and secure. No password required.</p>
     </div>
     <div class="card">
-      <div class="icon">🎁</div>
-      <h3>Completely Free</h3>
+      <h3>🎁 Completely Free</h3>
       <p>No hidden fees, no credit card required. 100% free forever.</p>
     </div>
   </div>
@@ -234,28 +285,17 @@ input,button{
 <!-- HOW IT WORKS -->
 <section id="how">
   <h2>How It Works</h2>
-  <p>Four simple steps to boost your social media presence</p>
-
+  <p>Three simple steps to boost your social media presence</p>
   <div class="grid">
-    <div class="card">
-      <h3>Choose Service</h3>
-      <p>Select TikTok Views or Instagram Views</p>
-    </div>
-    <div class="card">
-      <h3>Enter Link</h3>
-      <p>Paste your video or reel link</p>
-    </div>
-    <div class="card">
-      <h3>Get Results</h3>
-      <p>Receive 100 views within 5 minutes</p>
-    </div>
+    <div class="card"><h3>Choose Service</h3><p>Select TikTok or Instagram</p></div>
+    <div class="card"><h3>Enter Link</h3><p>Paste your video or reel link</p></div>
+    <div class="card"><h3>Get Results</h3><p>Receive 100 views within minutes</p></div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
   <h2>Frequently Asked Questions</h2>
-
   <div class="faq">
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">Is this service free?</div>
@@ -272,28 +312,30 @@ input,button{
   </div>
 </section>
 
-<!-- AUTH -->
+<!-- AUTH MODAL -->
 <div class="modal" id="auth">
   <div class="box">
+    <h3>Premium Login</h3>
     <input id="email" placeholder="Email">
     <input id="password" type="password" placeholder="Password">
+    <button class="primary" onclick="login()">Login</button>
     <button onclick="signup()">Signup</button>
-    <button onclick="login()">Login</button>
     <button onclick="closeAuth()">Close</button>
   </div>
 </div>
 
-<!-- ORDER -->
+<!-- ORDER MODAL -->
 <div class="modal" id="order">
   <div class="box">
+    <h3>Submit Link</h3>
     <input id="link" placeholder="Paste your link">
-    <button onclick="watchAd()">Watch Ad & Proceed</button>
+    <button class="primary" onclick="watchAd()">Watch Ad & Proceed</button>
     <button onclick="closeOrder()">Cancel</button>
   </div>
 </div>
 
 <script>
-/* MAIN TITLE TYPE */
+/* MAIN TITLE */
 const mainText="Luxury Social Media Growth";
 let mi=0;
 (function typeMain(){
@@ -303,7 +345,7 @@ let mi=0;
   }
 })();
 
-/* SUBTITLE TYPE */
+/* SUBTITLE */
 const subText="Luxury social media growth for TikTok & Instagram.";
 let si=0;
 const subEl=document.getElementById("heroSubtitle");
@@ -350,7 +392,7 @@ async function watchAd(){
   closeOrder();
 }
 
-/* FAQ TOGGLE */
+/* FAQ */
 function toggleFaq(el){
   const a=el.querySelector(".faq-a");
   a.style.maxHeight=a.style.maxHeight?"":a.scrollHeight+"px";
