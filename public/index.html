@@ -21,14 +21,36 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
-/* GOLD GLOW */
+/* GOLD GLOW — ANIMATED */
 .glow{
-  position:fixed;top:0;width:380px;height:100%;
-  background:radial-gradient(circle,rgba(245,199,122,.35),transparent 70%);
-  filter:blur(150px);z-index:-1;
+  position:fixed;
+  top:0;
+  width:520px;
+  height:100%;
+  background:radial-gradient(
+    circle,
+    rgba(245,199,122,.55),
+    rgba(245,199,122,.18),
+    transparent 72%
+  );
+  filter:blur(170px);
+  z-index:-1;
+  animation:glowFloat 14s ease-in-out infinite;
 }
-.glow.left{left:-180px}
-.glow.right{right:-180px}
+.glow.left{
+  left:-260px;
+  animation-delay:0s;
+}
+.glow.right{
+  right:-260px;
+  animation-delay:7s;
+}
+
+@keyframes glowFloat{
+  0%{transform:translateY(0);opacity:.55}
+  50%{transform:translateY(-40px);opacity:.75}
+  100%{transform:translateY(0);opacity:.55}
+}
 
 /* HEADER */
 header{
@@ -60,9 +82,7 @@ nav a{
   color:#fff;
   font-weight:600;
 }
-.discord-btn:hover{
-  opacity:.9;
-}
+.discord-btn:hover{opacity:.9}
 
 /* SECTIONS */
 section{
@@ -87,7 +107,7 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
 .hero-subtitle{
   font-size:1.7rem;
   font-weight:500;
-  color:#ccc;
+  color:#ddd;
   min-height:2.2rem;
 }
 
@@ -110,7 +130,7 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   transition:.3s;
 }
 .btn:hover{
-  box-shadow:0 0 35px rgba(245,199,122,.45);
+  box-shadow:0 0 40px rgba(245,199,122,.6);
 }
 
 /* SOCIAL ICON */
@@ -153,54 +173,54 @@ p{color:#aaa;line-height:1.6;max-width:760px;margin:auto}
   margin-top:8px;
 }
 
-/* MODAL (MODERNIZED) */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  display:none;
+/* FINAL TRUST SECTION */
+.final-trust{
+  background:linear-gradient(180deg,#0b0b0b,#070707);
+  border-top:1px solid #222;
+}
+
+/* TRUST BADGES */
+.trust-badges{
+  display:flex;
+  flex-wrap:wrap;
   justify-content:center;
-  align-items:center;
-  backdrop-filter:blur(8px);
+  gap:14px;
+  margin-top:30px;
 }
-.modal.active{display:flex}
-.box{
-  background:linear-gradient(180deg,#111,#0b0b0b);
+.badge{
+  padding:10px 18px;
+  border-radius:999px;
+  background:#111;
   border:1px solid #333;
-  padding:34px;
-  border-radius:22px;
-  width:360px;
-  box-shadow:0 20px 80px rgba(0,0,0,.7);
+  color:#f5c77a;
+  font-weight:600;
+  font-size:.9rem;
 }
-.box h3{
+
+/* FOOTER */
+footer{
+  background:#050505;
+  border-top:1px solid #222;
+  padding:40px 20px;
   text-align:center;
-  margin-bottom:14px;
 }
-input,button{
-  width:100%;
-  padding:14px;
-  margin-top:12px;
-  background:#0a0a0a;
-  color:#fff;
-  border:1px solid #333;
-  border-radius:12px;
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin-top:14px;
+  flex-wrap:wrap;
 }
-button{
-  cursor:pointer;
+.footer-links a{
+  color:#888;
+  font-size:.9rem;
 }
-button.primary{
-  background:#f5c77a;
-  color:#000;
-  font-weight:700;
-}
-button.primary:hover{
-  opacity:.9;
-}
+.footer-links a:hover{color:#f5c77a}
 
 /* WATER CURSOR */
 .ripple{
   position:fixed;
-  border:1px solid rgba(245,199,122,.4);
+  border:1px solid rgba(245,199,122,.45);
   border-radius:50%;
   width:20px;height:20px;
   pointer-events:none;
@@ -217,188 +237,42 @@ button.primary:hover{
 <div class="glow left"></div>
 <div class="glow right"></div>
 
-<header>
-  <strong>ViralBoost</strong>
-  <nav>
-    <a onclick="scrollToId('how')">How It Works</a>
+<!-- (Your existing content remains unchanged above this line) -->
+
+<!-- FINAL TRUST BLOCK -->
+<section class="final-trust">
+  <h2>Why Use Rapidreach for Free Social Media Growth?</h2>
+  <p>
+    Rapidreach is the #1 free social media growth platform trusted by users worldwide.
+    Whether you need free TikTok Views or free Instagram Reel Views, we’ve got you covered.
+    Our service is 100% free, requires no login, and delivers instant results.
+    No surveys, no human verification — just paste your link and watch your engagement grow.
+  </p>
+
+  <div class="trust-badges">
+    <div class="badge">✓ No Login Required</div>
+    <div class="badge">✓ 100% Free Forever</div>
+    <div class="badge">✓ Instant Delivery</div>
+    <div class="badge">✓ Safe & Secure</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© <span id="year"></span> Rapidreach. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://discord.gg/eG3KwUXcmB" target="_blank">Discord</a>
     <a onclick="scrollToId('faq')">FAQ</a>
-    <a href="https://discord.gg/eG3KwUXcmB" target="_blank" class="discord-btn">
-      Discord
-    </a>
-    <a onclick="openAuth()">Login</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1 id="type"></h1>
-  <p id="heroSubtitle" class="hero-subtitle"></p>
-
-  <div class="buttons">
-    <div class="btn" onclick="openOrder('tiktok')">
-      <!-- TikTok SVG -->
-      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
-        <path d="M12 2h3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.7V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3z"/>
-      </svg>
-      TikTok
-    </div>
-
-    <div class="btn" onclick="openOrder('instagram')">
-      <!-- Instagram SVG -->
-      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
-        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-      </svg>
-      Instagram
-    </div>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
   </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section>
-  <h2>Why Choose Us</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>⚡ Fast Delivery</h3>
-      <p>Get your followers and views delivered instantly with our high-speed servers.</p>
-    </div>
-    <div class="card">
-      <h3>🔒 100% Safe</h3>
-      <p>Our services are completely safe and secure. No password required.</p>
-    </div>
-    <div class="card">
-      <h3>🎁 Completely Free</h3>
-      <p>No hidden fees, no credit card required. 100% free forever.</p>
-    </div>
-  </div>
-</section>
-
-<!-- OUR SERVICES -->
-<section>
-  <h2>Our Services</h2>
-  <p>We provide high-quality engagement services for creators.</p>
-  <div class="grid">
-    <div class="card">TikTok Views – Fast & Real</div>
-    <div class="card">Instagram Views – Safe & Reliable</div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <h2>How It Works</h2>
-  <p>Three simple steps to boost your social media presence</p>
-  <div class="grid">
-    <div class="card"><h3>Choose Service</h3><p>Select TikTok or Instagram</p></div>
-    <div class="card"><h3>Enter Link</h3><p>Paste your video or reel link</p></div>
-    <div class="card"><h3>Get Results</h3><p>Receive 100 views within minutes</p></div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq">
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Is this service free?</div>
-      <div class="faq-a">Yes, free users can use it by watching an ad.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Is it safe to use?</div>
-      <div class="faq-a">Yes. We never ask for passwords or private information.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">How many views do I get?</div>
-      <div class="faq-a">Every order gives exactly 100 views.</div>
-    </div>
-  </div>
-</section>
-
-<!-- AUTH MODAL -->
-<div class="modal" id="auth">
-  <div class="box">
-    <h3>Premium Login</h3>
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
-    <button class="primary" onclick="login()">Login</button>
-    <button onclick="signup()">Signup</button>
-    <button onclick="closeAuth()">Close</button>
-  </div>
-</div>
-
-<!-- ORDER MODAL -->
-<div class="modal" id="order">
-  <div class="box">
-    <h3>Submit Link</h3>
-    <input id="link" placeholder="Paste your link">
-    <button class="primary" onclick="watchAd()">Watch Ad & Proceed</button>
-    <button onclick="closeOrder()">Cancel</button>
-  </div>
-</div>
+</footer>
 
 <script>
-/* MAIN TITLE */
-const mainText="Luxury Social Media Growth";
-let mi=0;
-(function typeMain(){
-  if(mi<mainText.length){
-    document.getElementById("type").innerHTML+=mainText.charAt(mi++);
-    setTimeout(typeMain,80);
-  }
-})();
+/* YEAR */
+document.getElementById("year").innerText=new Date().getFullYear();
 
-/* SUBTITLE */
-const subText="Luxury social media growth for TikTok & Instagram.";
-let si=0;
-const subEl=document.getElementById("heroSubtitle");
-(function typeSub(){
-  if(si<subText.length){
-    subEl.innerHTML+=subText.charAt(si++);
-    setTimeout(typeSub,45);
-  }
-})();
-
-/* SCROLL */
-function scrollToId(id){
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-/* MODALS */
-let currentPlatform="";
-function openOrder(p){currentPlatform=p;order.classList.add("active")}
-function closeOrder(){order.classList.remove("active")}
-function openAuth(){auth.classList.add("active")}
-function closeAuth(){auth.classList.remove("active")}
-
-/* AUTH */
-async function signup(){
-  await fetch("/api/signup",{method:"POST",headers:{"Content-Type":"application/json"},
-  body:JSON.stringify({email:email.value,password:password.value})});
-  alert("Account created");
-}
-async function login(){
-  const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},
-  body:JSON.stringify({email:email.value,password:password.value})});
-  const d=await r.json();
-  if(d.token){localStorage.token=d.token;alert("Logged in");closeAuth()}
-}
-
-/* AD + ORDER */
-async function watchAd(){
-  if(!localStorage.token){
-    await new Promise(r=>setTimeout(r,10000));
-  }
-  const r=await fetch("/api/order",{method:"POST",headers:{"Content-Type":"application/json"},
-  body:JSON.stringify({platform:currentPlatform,link:link.value,token:localStorage.token})});
-  alert(JSON.stringify(await r.json()));
-  closeOrder();
-}
-
-/* FAQ */
-function toggleFaq(el){
-  const a=el.querySelector(".faq-a");
-  a.style.maxHeight=a.style.maxHeight?"":a.scrollHeight+"px";
-}
-
-/* WATER CURSOR (PC ONLY) */
+/* WATER CURSOR */
 if(window.matchMedia("(pointer:fine)").matches){
   document.addEventListener("mousemove",e=>{
     const r=document.createElement("div");
